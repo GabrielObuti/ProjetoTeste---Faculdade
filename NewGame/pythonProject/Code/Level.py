@@ -1,21 +1,27 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
+import pygame
+from pygame import Surface
+
+from Code.Const import WIN_HEIGHT, WIN_WIDTH
 from Code.Entity import Entity
+from Code.EntityFactory import EntityFactory
 
 
 class Level:
     def __init__(self, window, name, menu_option):
-        self.window = window
+        self.window :Surface = window
         self.name = name
         self.mode = menu_option  #Opção do menu
         self.entity_list: list[Entity] = []
+        self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
 
 
     def run(self, ):
+        while True:
+            for ent in self.entity_list:
+                self.window.blit(source=ent.surf, dest=ent.rect)
+                ent.move()
+            pygame.display.flip()
         pass
 
-#PAROU EM 1:06:49
-#FAZENDO A CRIAÇÃO DO BACKGROUND
-#ULTIMA EXPLICAÇÃO FOI: A QUEBRA DA IMAGEM DO BACKGROUND COM TEMPOS DIFERENTES DE MOVIMENTAÇÃO
-#FAZENDO ISSO, DA IMPRESSÃO DE MOVIMENTAÇÃO DO FUNDO DE UMA FORMA ANIMADA
-#UMA PARTE SE MOVE MAIS RÁPIDA QUE A OUTRA

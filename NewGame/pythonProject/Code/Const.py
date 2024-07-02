@@ -12,3 +12,10 @@ MENU_OPTION = ('NEW GAME 1P',
 #W
 WIN_WIDTH =2304
 WIN_HEIGHT  = 1296
+
+#E
+ENTITY_SPEED= {'Level1Bg0': 0,
+               'Level1Bg1': 1,
+               'Level1Bg2': 3,
+                'Level1Bg3': 2,
+               'Level1Bg4':4}
